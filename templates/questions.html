@@ -1,0 +1,18 @@
+
+<form> 
+
+	<input type = "text" name ="qno" placeholder="question number" value = "{{userobj.qno}}"><br> <br>
+	<input type ="text" name = "qtext" placeholder="Enter the questions" value = "{{userobj.qtext}}"><br> <br>
+	<input type = "text" name = "answer" placeholder ="ENter your  answer" value = "{{userobj.answer}}" ><br> <br>
+	<input type = "text" name = "op1" placeholder ="Enter options 1"  value = "{{userobj.op1}}"><br> <br>
+	<input type = "text" name = "op2" placeholder ="Enter options 2" value = "{{userobj.op2}}" ><br> <br>
+	<input type = "text" name = "op3" placeholder ="Enter options 3" value = "{{userobj.op3}}" ><br> <br>
+	<input type = "text" name = "op4" placeholder ="Enter options 4"  value = "{{userobj.op4}}"><br> <br>
+	<input type = "text" name = "subject" placeholder ="Enter the subject"  value = "{{userobj.subject}}"><br> <br>
+	<input type = "submit"  value = "view" formaction="/examapp/viewquestions/">
+	<input type = "submit"  value = "addquestion" formaction="/examapp/addquestions/">
+	<input type = "submit"  value = "updatequestion" formaction="/examapp/updatequestion">
+	<input type = "submit"  value = "deletequestion" formaction="/examapp/deletequestion">
+</form>
+
+<span> {{message}}</span>
