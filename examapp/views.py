@@ -167,14 +167,34 @@ def viewquestions(request):
 def addquestions(request):
     qno = request.GET.get('qno')
     qtx = request.GET.get('qtext')
-    ans=request.GET['answer']
-    op1=request.GET['op1']
-    op2=request.GET['op2']
-    op3=request.GET['op3']
-    op4=request.GET['op4']
-    subject=request.GET['subject']
-    Question.objects.create(qno = qno,qtext = qtx,answer = ans ,op1 = op1,op2= op2,op3= op3,op4 = op4,subject = subject)
-    return render(request,'questions.html',{'message': 'questions added successfully'})
+    ans = request.GET.get('answer')     # SAFE
+    op1 = request.GET.get('op1')
+    op2 = request.GET.get('op2')
+    op3 = request.GET.get('op3')
+    op4 = request.GET.get('op4')
+    subject = request.GET.get('subject')
+
+    # Optional: Avoid creating empty records
+    if not all([qno, qtx, ans, op1, op2, op3, op4, subject]):
+        return render(request, 'questions.html', {
+            'message': 'Some fields are missing!'
+        })
+
+    Question.objects.create(
+        qno=qno,
+        qtext=qtx,
+        answer=ans,
+        op1=op1,
+        op2=op2,
+        op3=op3,
+        op4=op4,
+        subject=subject
+    )
+
+    return render(request, 'questions.html', {
+        'message': 'Question added successfully'
+    })
+
 
 
 def updatequestion(request):

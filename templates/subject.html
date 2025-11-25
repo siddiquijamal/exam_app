@@ -1,12 +1,77 @@
-<html>
-	<form>
-		<select name="subject">
-			<option>Maths </option>
-			<option> python </option>
-		</select>
-		<input type="submit" value = "Start Test" formaction="/examapp/startTest/">
-	</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Subject - Start Test</title>
 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff9966, #ff5e62);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .card {
+            background: #ffffff;
+            width: 350px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            text-align: center;
+        }
 
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #ff5e62;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #e14b52;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card">
+        <h2>Select Subject</h2>
+
+        <form>
+            <select name="subject">
+                <option value="maths">Maths</option>
+                <option value="python">Python</option>
+            </select>
+
+            <input type="submit" value="Start Test" class="btn" formaction="/startTest/">
+        </form>
+    </div>
+
+</body>
 </html>

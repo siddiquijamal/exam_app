@@ -3,15 +3,15 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('homepage/',views.homepage),
+    path('',views.homepage),
     path('showform/',views.showForm),
     path('viewquestions/',views.viewquestions),
     path('addquestions/',views.addquestions),
     path('updatequestion/',views.updatequestion),
     path('deletequestion/',views.deletequestion),
-    path('registertionform/',views.registerationform),
+    path('registertionform/',views.registerationform,name = "register"),
     path('registeration/',views.registeration),
-    path('loginform/',views.loginform),
+    path('loginform/',views.loginform,name = "login"),
     path('login/',views.login),
     path('nextquestion/',views.nextQuestion),
     path('previousquestion/',views.previousQuestion),

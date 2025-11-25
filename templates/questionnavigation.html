@@ -1,59 +1,160 @@
-<html>
-
-<html></html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exam Question</title>
 
     <style>
-
-        input[type='text']
-        {
-            display: block;
-            margin: 10px;
-            padding: 20px;
-            width: 400;
-            text-align: center;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #8EC5FC, #E0C3FC);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 10px;
         }
 
-    </style>
+        .container {
+            width: 95%;
+            max-width: 750px;
+            background: white;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.18);
+            animation: fadeIn 0.5s ease-in-out;
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 22px;
+            color: #333;
+            font-size: 28px;
+        }
+
+        .question-box {
+            background: #fdf2ff;
+            padding: 18px;
+            border-left: 6px solid #c56cf0;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 17px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            margin: 12px 0;
+            background: #fafafa;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 16px;
+        }
+
+        .option:hover {
+            background: #f0e6ff;
+            border-color: #a66cff;
+        }
+
+        .option input {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        .btn-box {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 18px;
+            margin: 0 8px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .prev { background: #4b7bec; }
+        .next { background: #20bf6b; }
+        .end  { background: #eb3b5a; }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .message {
+            display: block;
+            text-align: center;
+            margin-top: 22px;
+            font-size: 20px;
+            color: #eb3b5a;
+        }
+    </style>
 </head>
 
 <body>
 
-    <form>
+    <div class="container">
+        <h2>Exam Question</h2>
 
-        <input type="text" name="qno" value="{{question.qno}}"> 
-        
-        <input type="text" name="qtext" value="{{question.qtext}}">
+        <form>
+            
+            <input type="hidden" name="qno" value="{{question.qno}}">
+            <input type="hidden" name="qtext" value="{{question.qtext}}">
+            <input type="hidden" name="answer" value="{{question.answer}}">
+            <input type="hidden" name="subject" value="{{question.subject}}">
 
-        <input type="hidden" name="answer" value="{{question.answer}}">
+            <div class="question-box">
+                <strong>Q{{question.qno}}:</strong> {{question.qtext}}
+            </div>
 
-        <input type="radio" name="op" value="{{question.op1}}"> <span style="color:red"> {{question.op1}} </span>
+            <label class="option">
+                <input type="radio" name="op" value="{{question.op1}}">
+                {{question.op1}}
+            </label>
 
-        <input type="radio" name="op" value="{{question.op2}}"> <span style="color:red"> {{question.op2}} </span>
+            <label class="option">
+                <input type="radio" name="op" value="{{question.op2}}">
+                {{question.op2}}
+            </label>
 
-        <input type="radio" name="op" value="{{question.op3}}"><span style="color:red"> {{question.op3}} </span>
+            <label class="option">
+                <input type="radio" name="op" value="{{question.op3}}">
+                {{question.op3}}
+            </label>
 
-        <input type="radio" name="op" value="{{question.op4}}"><span style="color:red"> {{question.op4}} </span>
+            <label class="option">
+                <input type="radio" name="op" value="{{question.op4}}">
+                {{question.op4}}
+            </label>
 
-        <input type="hidden" type="text" name="subject" value="{{question.subject}}"><br><br>
+            <div class="btn-box">
+                <input type="submit" value="Previous" class="btn prev" formaction="/previousquestion">
+                <input type="submit" value="Next" class="btn next" formaction="/nextquestion">
+                <input type="submit" value="End Exam" class="btn end" formaction="/endexam">
+            </div>
+        </form>
 
-
-        <input type="submit" value="next" formaction="/examapp/nextquestion">
-        <input type="submit" value="previous" formaction="/examapp/previousquestion">
-               
-        <input type="submit" value="end exam" formaction="/examapp/endexam">
-
-    </form>
-
-   
-
-
-    <span style="color:red;font-size: 30px;"> {{message}} </span>
+        <span class="message">{{message}}</span>
+    </div>
 
 </body>
-
-
-</html>
 </html>

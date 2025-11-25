@@ -1,18 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Questions</title>
 
-<form> 
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-	<input type = "text" name ="qno" placeholder="question number" value = "{{userobj.qno}}"><br> <br>
-	<input type ="text" name = "qtext" placeholder="Enter the questions" value = "{{userobj.qtext}}"><br> <br>
-	<input type = "text" name = "answer" placeholder ="ENter your  answer" value = "{{userobj.answer}}" ><br> <br>
-	<input type = "text" name = "op1" placeholder ="Enter options 1"  value = "{{userobj.op1}}"><br> <br>
-	<input type = "text" name = "op2" placeholder ="Enter options 2" value = "{{userobj.op2}}" ><br> <br>
-	<input type = "text" name = "op3" placeholder ="Enter options 3" value = "{{userobj.op3}}" ><br> <br>
-	<input type = "text" name = "op4" placeholder ="Enter options 4"  value = "{{userobj.op4}}"><br> <br>
-	<input type = "text" name = "subject" placeholder ="Enter the subject"  value = "{{userobj.subject}}"><br> <br>
-	<input type = "submit"  value = "view" formaction="/examapp/viewquestions/">
-	<input type = "submit"  value = "addquestion" formaction="/examapp/addquestions/">
-	<input type = "submit"  value = "updatequestion" formaction="/examapp/updatequestion">
-	<input type = "submit"  value = "deletequestion" formaction="/examapp/deletequestion">
-</form>
+        .card {
+            width: 450px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+        }
 
-<span> {{message}}</span>
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input:focus {
+            border-color: #764ba2;
+            outline: none;
+        }
+
+        .btn-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .view { background: #3498db; }
+        .add { background: #2ecc71; }
+        .update { background: #f1c40f; color: #000; }
+        .delete { background: #e74c3c; }
+
+        .btn:hover { opacity: 0.9; }
+
+        .message {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 16px;
+            color: #e63946;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>Manage Questions</h2>
+
+        <form>
+            <input type="text" name="qno" placeholder="Question number" value="{{userobj.qno}}">
+            <input type="text" name="qtext" placeholder="Enter the question" value="{{userobj.qtext}}">
+            <input type="text" name="answer" placeholder="Enter correct answer" value="{{userobj.answer}}">
+
+            <input type="text" name="op1" placeholder="Option 1" value="{{userobj.op1}}">
+            <input type="text" name="op2" placeholder="Option 2" value="{{userobj.op2}}">
+            <input type="text" name="op3" placeholder="Option 3" value="{{userobj.op3}}">
+            <input type="text" name="op4" placeholder="Option 4" value="{{userobj.op4}}">
+
+            <input type="text" name="subject" placeholder="Enter subject" value="{{userobj.subject}}">
+
+            <div class="btn-box">
+                <input type="submit" value="View" formaction="/viewquestions/" class="btn view">
+                <input type="submit" value="Add" formaction="/addquestions/" class="btn add">
+                <input type="submit" value="Update" formaction="/updatequestion" class="btn update">
+                <input type="submit" value="Delete" formaction="/deletequestion" class="btn delete">
+            </div>
+        </form>
+
+        <span class="message">{{message}}</span>
+    </div>
+
+</body>
+</html>
